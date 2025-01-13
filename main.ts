@@ -4,11 +4,11 @@ import { PrimeFiFaucet, showMultiPrivateKey } from "./src";
 const MNEMONIC = process.env.MNEMONIC;
 const START = process.env.START;
 const END = process.env.END;
-if (!MNEMONIC) {
-  console.error(`=> MNEMONIC is required!`);
+if (!MNEMONIC || !START || !END) {
+  console.error(`=> ENV is required!`);
   process.exit(0);
 }
-const pks = showMultiPrivateKey(MNEMONIC, 35, 100);
+const pks = showMultiPrivateKey(MNEMONIC, Number(START), Number(END));
 // AIRDROP1 : 0-100
 
 (async () => {
